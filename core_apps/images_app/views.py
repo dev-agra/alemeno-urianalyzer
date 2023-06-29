@@ -32,9 +32,7 @@ class ImageProcessSet(APIView):
                       'ketone', 'bilirubin', 'glucose']
         for i in range(10):
             pixel_center = img[cy, cx]
-            r, g, b = int(pixel_center[0]),
-            int(pixel_center[1]), int(pixel_center[2])
-
+            r, g, b = int(pixel_center[0]), int(pixel_center[1]), int(pixel_center[2])
             response.update({f'{strip_para[i]}': [r, g, b]})
             cv2.circle(img, (cx, cy), 5, (255, 0, 0), 3)
             cy -= 73
