@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Images</h1>
+
+  <h2>Upload an Image</h2>
+  <!-- Image Upload Form -->
+  <form>{% csrf_token %}
+    <input type="file" accept="image/*" id="imageInput">
+    <button onclick="createImage(event)">Submit</button>
+  </form>
+
+  <!-- Include the CSRF token in a JavaScript-accessible context -->
+
+  <script>
+    const processimageEndpoint = 'http://localhost:8000/process_image/'
+    const imageInput = document.querySelector('#imageInput')
+    var csrfToken = "{{ csrf_token }}";
+    const headers = {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': csrfToken,
+    };
+
+    const createImage = async (event) => {
+      event.preventDefault()
+      let image = imageInput.files[0]
+      let formData = new FormData()
+
+      formData.append('file', image)
+      console.log(csrfToken)
+
+      fetch(processimageEndpoint, {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Process the response data
+          console.log(data.processed_image);
+        })
+        .catch(error => {
+          // Handle any errors
+          console.error('Error:', error);
+        });
+    }
+  </script>
+</body>
+</html>

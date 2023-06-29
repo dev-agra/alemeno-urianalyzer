@@ -1,0 +1,14 @@
+[flake8]
+exclude = 
+    migrations,
+    __pycache__,
+    manage.py,
+    settings.py,
+    Lib,
+    Scripts,
+    static_files,
+    strip_images,
+    .env,
+    colorextract.py,
+    colorextract1.py,
+    hsv_color_picker.py
