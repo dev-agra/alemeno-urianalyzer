@@ -4,6 +4,13 @@ the webapp is deployed and hosted on render with github repository conected with
 Other deployment schems like Docker with EC2, Nginx proxy were not used as the deployment is only for demonstration purpose.
 The webapp is deployed on the url: https://alemeno-urianalyzer-assign.onrender.com/
 
+Instructions to use:
+1) Submit a image file
+2) Press F12
+3) Vist the "Network" section of Inspect Element Tool
+4) A "POST" request is made to 'process_image' double click on it
+5) A JSON response with RGB values for each of the Urine Strip testing parameter(pH, Blood, etc)
+
 The image processing is done as:
 ![image-processing](https://github.com/dev-agra/alemeno-urianalyzer/blob/master/core_apps/images_app/static/images_app/Screenshot%20(325).png)
 
